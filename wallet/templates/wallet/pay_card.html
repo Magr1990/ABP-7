@@ -1,0 +1,18 @@
+{% extends 'wallet/base.html' %}
+{% block content %}
+<div class="card card-custom p-4 mx-auto" style="max-width: 600px;">
+    <h3 class="mb-3">Pagar Tarjeta de Crédito</h3>
+    <div class="alert alert-warning">
+        <strong>Deuda Nacional:</strong> ${{ card.national_balance }} CLP<br>
+        <strong>Deuda Internacional:</strong> ${{ card.international_balance }} USD
+    </div>
+    <form method="post">
+        {% csrf_token %}
+        {{ form.as_p }}
+        <div class="d-flex justify-content-between mt-4">
+            <a href="{% url 'card_detail' %}" class="btn btn-secondary">Volver</a>
+            <button type="submit" class="btn btn-success">Pagar Deuda</button>
+        </div>
+    </form>
+</div>
+{% endblock %}

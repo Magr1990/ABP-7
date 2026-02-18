@@ -1,0 +1,59 @@
+{% extends 'wallet/base.html' %}
+
+{% block content %}
+<div class="row">
+    <div class="col-md-12 mb-4">
+        <div class="card card-custom bg-primary text-white p-4">
+            <h2>Saldo Cuenta Corriente</h2>
+            <h1 class="display-4 fw-bold">${{ account.balance }} CLP</h1>
+            <p class="mb-0">N° Cuenta: {{ account.account_number }}</p>
+        </div>
+    </div>
+
+    <div class="col-md-4 mb-3">
+        <div class="card card-custom p-3">
+            <h6 class="text-muted">Línea de Crédito</h6>
+            <h4>Disp: ${{ account.credit_line_available }}</h4>
+            <small class="text-danger">Uso: ${{ account.credit_line_usage }}</small>
+        </div>
+    </div>
+    <div class="col-md-4 mb-3">
+        <div class="card card-custom p-3">
+            <h6 class="text-muted">Tarjeta Crédito (CLP)</h6>
+            <h4>Disp: ${{ card.national_available }}</h4>
+            <small class="text-danger">Deuda: ${{ card.national_balance }}</small>
+        </div>
+    </div>
+    <div class="col-md-4 mb-3">
+        <div class="card card-custom p-3">
+            <h6 class="text-muted">Tarjeta Crédito (USD)</h6>
+            <h4>Disp: ${{ card.international_available }}</h4>
+            <small class="text-danger">Deuda: ${{ card.international_balance }}</small>
+        </div>
+    </div>
+
+    <div class="col-12 mt-4">
+        <h4 class="mb-3">Operaciones</h4>
+        <div class="row g-3">
+            <div class="col-6 col-md-2">
+                <a href="{% url 'deposit' %}" class="btn btn-outline-primary w-100 h-100 py-3">📥<br>Depositar</a>
+            </div>
+            <div class="col-6 col-md-2">
+                <a href="{% url 'transfer' %}" class="btn btn-outline-primary w-100 h-100 py-3">💸<br>Transferir</a>
+            </div>
+            <div class="col-6 col-md-2">
+                <a href="{% url 'movements' %}" class="btn btn-outline-primary w-100 h-100 py-3">📋<br>Movimientos</a>
+            </div>
+            <div class="col-6 col-md-2">
+                <a href="{% url 'credit_line' %}" class="btn btn-outline-primary w-100 h-100 py-3">🏦<br>Línea Crédito</a>
+            </div>
+            <div class="col-6 col-md-2">
+                <a href="{% url 'pay_service' %}" class="btn btn-outline-primary w-100 h-100 py-3">💡<br>Servicios</a>
+            </div>
+            <div class="col-6 col-md-2">
+                <a href="{% url 'card_detail' %}" class="btn btn-outline-primary w-100 h-100 py-3">💳<br>Tarjeta</a>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}

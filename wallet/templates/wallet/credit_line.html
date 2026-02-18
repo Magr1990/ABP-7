@@ -1,0 +1,42 @@
+{% extends 'wallet/base.html' %}
+{% block content %}
+<div class="card card-custom p-4 mx-auto" style="max-width: 600px;">
+    <h3 class="mb-3">Estado Línea de Crédito</h3>
+    
+    <div class="row text-center mb-4">
+        <div class="col-4">
+            <h5 class="text-muted">Cupo Total</h5>
+            <p class="fs-5">${{ account.credit_line_limit }}</p>
+        </div>
+        <div class="col-4 border-start border-end">
+            <h5 class="text-danger">Utilizado</h5>
+            <p class="fs-5 fw-bold">${{ account.credit_line_usage }}</p>
+        </div>
+        <div class="col-4">
+            <h5 class="text-success">Disponible</h5>
+            <p class="fs-5 fw-bold">${{ account.credit_line_available }}</p>
+        </div>
+    </div>
+
+    <div class="alert alert-secondary">
+        <small>ℹ️ La línea de crédito se utiliza automáticamente cuando realizas transferencias o retiros sin saldo suficiente en tu Cuenta Corriente.</small>
+    </div>
+
+    {% if account.credit_line_usage > 0 %}
+        <div class="alert alert-warning">
+            Tienes una deuda activa. Cualquier depósito que realices se usará primero para pagar esta deuda.
+        </div>
+        <div class="d-grid gap-2">
+            <a href="{% url 'deposit' %}" class="btn btn-success">Pagar Deuda (Depositar)</a>
+        </div>
+    {% else %}
+        <div class="alert alert-success">
+            ¡Excelente! No tienes deuda en tu línea de crédito.
+        </div>
+    {% endif %}
+
+    <div class="text-center mt-3">
+        <a href="{% url 'home' %}" class="btn btn-link">Volver al Inicio</a>
+    </div>
+</div>
+{% endblock %}

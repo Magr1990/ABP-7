@@ -1,0 +1,42 @@
+{% extends 'wallet/base.html' %}
+{% block content %}
+<div class="card card-custom p-4 mx-auto" style="max-width: 600px;">
+    <h3 class="mb-3">Pago de Servicios</h3>
+    <form method="post">
+        {% csrf_token %}
+        {{ form.as_p }}
+        <div class="d-flex justify-content-between mt-4">
+            <a href="{% url 'home' %}" class="btn btn-secondary">Volver</a>
+            <button type="submit" class="btn btn-primary">Pagar Cuenta</button>
+        </div>
+    </form>
+</div>
+
+<script>
+document.addEventListener('DOMContentLoaded', function() {
+    const paymentMethodSelect = document.getElementById('id_payment_method');
+    const installmentsInput = document.getElementById('id_installments');
+    
+    // El form.as_p de Django envuelve los campos en etiquetas <p>. Buscamos la etiqueta padre para ocultarla/mostrarla.
+    const installmentsWrapper = installmentsInput.closest('p'); 
+
+    function toggleInstallments() {
+        if (paymentMethodSelect.value === 'CREDIT_CARD') {
+            // Habilitar cuotas para Tarjeta de Crédito
+            if (installmentsWrapper) installmentsWrapper.style.display = 'block';
+            installmentsInput.disabled = false;
+        } else {
+            // Bloquear cuotas para Cuenta Corriente
+            if (installmentsWrapper) installmentsWrapper.style.display = 'none';
+            installmentsInput.disabled = true;
+        }
+    }
+
+    // Ejecutar la función al cargar la página para establecer el estado inicial correcto.
+    toggleInstallments();
+
+    // Añadir un detector de eventos para cuando el usuario cambie el método de pago.
+    paymentMethodSelect.addEventListener('change', toggleInstallments);
+});
+</script>
+{% endblock %}

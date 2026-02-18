@@ -1,0 +1,14 @@
+{% extends 'wallet/base.html' %}
+{% block content %}
+<div class="card card-custom p-4 mx-auto" style="max-width: 600px;">
+    <h3 class="mb-3">Editar Contacto: {{ contact.name }}</h3>
+    <form method="post">
+        {% csrf_token %}
+        {{ form.as_p }}
+        <div class="d-flex justify-content-between mt-4">
+            <a href="{% url 'transfer' %}" class="btn btn-secondary">Cancelar</a>
+            <button type="submit" class="btn btn-primary">Guardar Cambios</button>
+        </div>
+    </form>
+</div>
+{% endblock %}

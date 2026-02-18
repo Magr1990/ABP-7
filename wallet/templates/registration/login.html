@@ -1,0 +1,30 @@
+{% extends 'wallet/base.html' %}
+
+{% block content %}
+<div class="row justify-content-center">
+    <div class="col-md-6 col-lg-4">
+        <div class="card card-custom p-4">
+            <h3 class="text-center mb-4">Bienvenido</h3>
+            <form method="post">
+                {% csrf_token %}
+                {% if form.errors %}
+                    <div class="alert alert-danger text-center" role="alert">
+                        Credenciales inválidas. Intente nuevamente.
+                    </div>
+                {% endif %}
+                <div class="form-floating mb-3">
+                    <input type="text" name="username" class="form-control" id="id_username" placeholder="Nombre de Usuario" required autofocus>
+                    <label for="id_username">Nombre de Usuario</label>
+                </div>
+                <div class="form-floating mb-3">
+                    <input type="password" name="password" class="form-control" id="id_password" placeholder="Contraseña" required>
+                    <label for="id_password">Contraseña</label>
+                </div>
+                <div class="d-grid">
+                    <button type="submit" class="btn btn-primary">Iniciar Sesión</button>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+{% endblock %}

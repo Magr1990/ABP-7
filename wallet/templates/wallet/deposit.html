@@ -1,0 +1,26 @@
+{% extends 'wallet/base.html' %}
+{% block content %}
+<div class="card card-custom p-4 mx-auto" style="max-width: 600px;">
+    <h3 class="mb-3">Depositar Fondos</h3>
+    <div class="alert alert-info">
+        <div class="row">
+            <div class="col-md-6">
+                <strong>Saldo Cta. Corriente:</strong> ${{ account.balance }}<br>
+                <strong>Deuda Línea Crédito:</strong> ${{ account.credit_line_usage }}
+            </div>
+            <div class="col-md-6">
+                <strong>Cupo Tarjeta Nacional:</strong> ${{ card.national_available }}<br>
+                <strong>Cupo Tarjeta Intl. (USD):</strong> ${{ card.international_available }}
+            </div>
+        </div>
+    </div>
+    <form method="post">
+        {% csrf_token %}
+        {{ form.as_p }}
+        <div class="d-flex justify-content-between mt-4">
+            <a href="{% url 'home' %}" class="btn btn-secondary">Volver</a>
+            <button type="submit" class="btn btn-success">Depositar</button>
+        </div>
+    </form>
+</div>
+{% endblock %}
