@@ -47,7 +47,7 @@ Sigue estos pasos para ejecutar el proyecto en tu máquina local.
 
 1.  **Clona el repositorio (o descarga el ZIP):**
     ```bash
-    git clone <URL-del-repositorio>
+    git clone https://github.com/Magr1990/ABP-7.git
     cd ABP-7 # O el nombre de la carpeta del proyecto
     ```
 
