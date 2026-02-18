@@ -1,10 +1,12 @@
 # 🇨🇱 Alke Wallet Chile
 
-Alke Wallet Chile es una aplicación web desarrollada con Django que simula una billetera digital para el mercado chileno. Permite a los usuarios gestionar sus finanzas, incluyendo una cuenta corriente, línea de crédito y tarjetas de crédito en pesos chilenos (CLP) y dólares (USD).
+[![Repositorio de GitHub](https://img.shields.io/badge/GitHub-Repo-blue?logo=github)](https://github.com/Magr1990/ABP-7)
+
+**Alke Wallet Chile** es una aplicación web desarrollada con Django que simula una billetera digital para el mercado chileno. Permite a los usuarios gestionar sus finanzas, incluyendo una cuenta corriente, línea de crédito y tarjetas de crédito en pesos chilenos (CLP) y dólares (USD).
 
 ## ✨ Características Principales
 
-- **Gestión de Cuentas:** Visualización de saldos de cuenta corriente, línea de crédito y tarjetas.
+- **Dashboard Financiero:** Visualización clara de saldos de cuenta corriente, línea de crédito y tarjetas.
 - **Operaciones Bancarias:**
   - **Depósitos:** Con lógica de pago automático de deudas en la línea de crédito.
   - **Transferencias a Terceros:** Descuento desde la cuenta corriente con uso automático de la línea de crédito como sobregiro.
@@ -12,16 +14,27 @@ Alke Wallet Chile es una aplicación web desarrollada con Django que simula una 
   - **Pago de Tarjeta de Crédito:** Soporta el pago de deudas nacionales (CLP) e internacionales (USD), con conversión de moneda automática.
 - **Gestión de Contactos:** Funcionalidad CRUD completa (Crear, Leer, Actualizar, Eliminar) para una agenda de contactos de transferencia.
 - **Seguridad de Tarjeta:** Visualización de datos sensibles de la tarjeta de crédito (número, CVV, fecha) protegida por un PIN.
-- **Historial de Movimientos:** Registro detallado de todas las transacciones realizadas por el usuario.
+- **Historial de Movimientos:** Registro detallado y ordenado de todas las transacciones realizadas.
 
 ## 🛠️ Tecnologías Utilizadas
 
 - **Backend:** Python, Django
 - **Base de Datos:** SQLite (por defecto en Django)
 - **Frontend:** HTML, CSS, Bootstrap 5
-- **JavaScript:** Para funcionalidades interactivas en el frontend.
+- **JavaScript:** Para funcionalidades interactivas en el frontend (ej. ocultar/mostrar campos de formulario).
 
-## 🚀 Instalación y Puesta en Marcha
+## 📂 Estructura del Proyecto
+
+```
+ABP-7/
+├── alke_wallet/     # Paquete de configuración del proyecto Django.
+├── wallet/          # App principal que contiene modelos, vistas y lógica de la billetera.
+├── scripts/         # Scripts de ayuda para instalación y mantenimiento.
+├── manage.py        # Utilidad de línea de comandos de Django.
+└── requirements.txt # Dependencias del proyecto.
+```
+
+## � Instalación y Puesta en Marcha
 
 Sigue estos pasos para ejecutar el proyecto en tu máquina local.
 
@@ -58,9 +71,9 @@ Sigue estos pasos para ejecutar el proyecto en tu máquina local.
     ```
 
 4.  **Configura la base de datos y crea un superusuario:**
-    El proyecto incluye un script para automatizar este proceso.
+    El proyecto incluye un script en la carpeta `scripts/` para automatizar este proceso.
     ```bash
-    python finish_install.py
+    python scripts/finish_install.py
     ```
     Esto creará la base de datos, aplicará las migraciones y creará un usuario administrador con las credenciales:
     - **Usuario:** `admin`
@@ -71,4 +84,4 @@ Sigue estos pasos para ejecutar el proyecto en tu máquina local.
     python manage.py runserver
     ```
 
-6.  **¡Listo!** Abre tu navegador y ve a `http://127.0.0.1:8000/` para usar la aplicación. Inicia sesión con el usuario `admin`.
+6.  **¡Listo!** Abre tu navegador y ve a `http://127.0.0.1:8000/`. Inicia sesión con el usuario `admin` o regístrate para crear una nueva cuenta.

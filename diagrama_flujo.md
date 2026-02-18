@@ -1,5 +1,7 @@
 # Diagrama de Flujo y Lógica de Alke Wallet
 
+[![Repositorio de GitHub](https://img.shields.io/badge/GitHub-Repo-blue?logo=github)](https://github.com/Magr1990/ABP-7)
+
 Este documento describe los flujos de usuario y la lógica de negocio principal de la aplicación.
 
 ## 1. Flujo de Autenticación
